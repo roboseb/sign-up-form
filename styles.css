@@ -1,10 +1,18 @@
+:root{
+    --pale-red: rgb(255, 214, 214);
+    --sebgenta: rgb(172, 30, 58);
+    --ice-blue: rgb(161, 246, 242);
+    --deep-blue: black;
+    --pass-text: "Must be 5-20 characters";
+}
+
 body {
     margin: 0;
     display:flex;
     flex-direction: row;
     font-family: 'Righteous', cursive;
     font-family: 'Roboto', sans-serif;
-    background-color: rgb(255, 214, 214);
+    background-color: var(--pale-red);
 }
 
 h1 {
@@ -54,25 +62,39 @@ h1 {
 img {
     height:auto;
     width:75px;
-    filter:drop-shadow(-4px 8px 2px rgb(148, 0, 0))
+    filter:drop-shadow(-4px 8px 2px rgb(148, 0, 0));
+}
+
+@keyframes headspin {
+    from {filter: invert(0%); transform: rotate(0deg); width: 75px; margin:0px;}
+    to {filter: invert(75%); transform: rotate(360deg); width: 10px; margin:0px 32.5px 0px 32.5px}
+} 
+
+.clicked{
+    animation: headspin 4s;
+    width: 10px;
+    margin:0px 32.5px 0px 32.5px;
+    filter: invert(75%);
 }
 
 
-form {
-    margin-top: 75px;    
+
+
+#formpanel {
+    margin-top: 40px;    
     background-color: white;
     display: flex;
     flex-direction: column;
     justify-content: center;
     filter: drop-shadow(0px 6px 4px rgb(93, 93, 93));
-    padding: 0px 0 30px;
+    padding: 0px 0 50px 50px;
 }
 
 #inputbox {
     display:grid;
     grid-template-columns: auto auto;
     gap:25px 80px;
-    max-width: 20vw;
+    max-width: 40vw;
 }
 
 button {
@@ -81,35 +103,35 @@ button {
     height: 50px;
     border-style: none;
     border-radius: 5px;
-    background-color:rgb(172, 30, 58);
+    background-color: var(--sebgenta);
     color:white;
     font-size: 1em;
+    filter: drop-shadow(2px 2px 5px grey);
 }
 
 .field {
     display: flex;
     flex-direction: column;
+    max-width: 200px;
 }
 
+
+
 legend{
-    font-weight: bold;
-    font-size: 2rem;
+    font-weight: bolder;
+    font-size: 1.5rem;
     margin: 30px 0 30px;
 }
 
 h2 {
     font-weight: bold;
     margin:0px 0px 20px;
-    font-size: 2rem;    
+    font-size: 1.5rem;    
 }
 
-label {
+label, span::after {
     font-weight: bold;
     font-size: 0.8em;
-}
-
-form {
-    padding-left: 50px;
 }
 
 .intro, button, #login{
@@ -123,4 +145,79 @@ form {
 
 #login{
     font-weight: bold;
+}
+
+a, a:visited{
+    text-decoration: none;
+    color: var(--sebgenta);
+}
+
+input{
+    height: 30px;
+    width: 100%;
+    border-style: solid;
+    border-width: 2px;
+    border-radius: 3px;
+    border-color: rgb(236, 236, 236);
+}
+
+@keyframes invinputhover{
+    from {background-color: white; border-color: rgb(236, 236, 236)}
+    to {background-color: lightgrey; border-color: var(--sebgenta);}
+}
+
+@keyframes valinputhover{
+    from {border-color: rgb(236, 236, 236)}
+    to {border-color: black;}
+}
+
+input:hover:invalid, input:focus:invalid{
+    outline: none;
+    animation: invinputhover 0.5s;
+    background-color: lightgrey;
+    border-color: var(--sebgenta);
+}
+
+input:hover:valid, input:focus:valid{
+    animation: valinputhover 0.5s;
+    outline: none;
+    border-color: black;
+}
+
+input + span {
+    position: relative;
+}
+
+input:required:invalid + span::after {
+    position: absolute;
+    content: "Required";
+    right: 0px;
+    bottom:40px;
+    color: white;
+    font-weight: bolder;
+    background-color: var(--deep-blue);
+    border-radius: 3px;
+    padding: 2px 5px 2px 5px;
+}
+
+input[type="email"]:not(:placeholder-shown):invalid + span::after{
+    background-color: var(--sebgenta);
+    content: "Invalid email!";
+}
+
+input[type="tel"]:not(:placeholder-shown):invalid + span::after{
+    position: absolute;
+    content: "Invalid phone";
+    right: 0px;
+    bottom:40px;
+    color: white;
+    font-weight: bolder;
+    background-color: var(--sebgenta);
+    border-radius: 3px;
+    padding: 2px 5px 2px 5px;
+}
+
+input[type="password"]:not(:placeholder-shown):invalid + span::after{
+    background-color: var(--sebgenta);
+    content: var(--pass-text);
 }

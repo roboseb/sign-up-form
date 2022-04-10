@@ -19,51 +19,53 @@
         </div>
 
     </div>
-   
+    
     <div id="formbox">
         <h2 class="intro">Life itself is only a vision; 
             A dream. Nothing exists, save empty space 
             and you. And you are but a thought.</h2>
         <h2 class="intro">God's kingdom awaits you!</h2>
-        <form>
-            <legend>Let's do this!</legend>
-            <div id=inputbox>
-                <div class="field">
-                <label for="firstname">FIRST NAME</label>
-                <input type="text" name="firstname" id="firstname">
-                </div>
+        <form name="form" action="" method="post">
+            <div id="formpanel">
+                <legend>Let's do this!</legend>
+                <div id=inputbox>
+                    <div class="field">
+                    <label for="firstname">FIRST NAME</label>
+                    <input required type="text" name="firstname" id="firstname"><span></span>
+                    </div>
 
-                <div class="field">
-                <label for="lastname">LAST NAME</label>
-                <input type="text" name="lastname" id="lastname">
-                </div>
+                    <div class="field">
+                    <label for="lastname">LAST NAME</label>
+                    <input required type="text" name="lastname" id="lastname"><span></span>
+                    </div>
 
-                <div class="field">
-                <label for="email">EMAIL</label>
-                <input type="email" name="email" id="email">
-                </div>
+                    <div class="field">
+                    <label for="email">EMAIL</label>
+                    <input required placeholder=" " type="email" name="email" id="email"><span></span>
+                    </div>
 
-                <div class="field">
-                <label for="phone">PHONE NUMBER</label>
-                <input type="tel" name="phone" id="phone">
-                </div>
+                    <div class="field">
+                    <label for="phone">PHONE NUMBER</label>
+                    <input  pattern="[0-9 \-,]{7,20}" placeholder=" " maxlength="20" type="tel" name="phone" id="phone"><span></span>
+                    </div>
 
-                <div class="field">
-                <label for="password1">PASSWORD</label>
-                <input type="password" name="password" id="password1">
-                </div>
+                    <div class="field">
+                    <label for="password1">PASSWORD</label>
+                    <input pattern=".{5,20}" placeholder=" " required type="password" name="password" id="password1" class="error"><span></span>
+                    </div>
 
-                <div class="field">
-                <label for="password2">CONFIRM PASSWORD</label>
-                <input type="password" name="password" id="password2">
+                    <div class="field">
+                    <label for="password2">CONFIRM PASSWORD</label>
+                    <input onkeyup='check()' pattern=".{5,20}"  placeholder=" " required type="password" name="password" id="password2" class="error"><span></span>
+                    </div>
                 </div>
             </div>
+            <button type="submit">Create Account</button>
         </form>
-        <button type="submit">Create Account</button>
-        <div id="login">Already have an account?</div>
+        <div id="login">Already have an account? <a href="images/head.png">Log in</a></div>
     </div>
 
-    
+    <script src="script.js"></script>    
     
 </body>
 </html>
