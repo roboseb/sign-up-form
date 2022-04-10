@@ -107,6 +107,12 @@ button {
     color:white;
     font-size: 1em;
     filter: drop-shadow(2px 2px 5px grey);
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: rgb(128, 28, 48);
+    box-shadow: inset 3px 3px 9px rgb(75, 24, 34);
 }
 
 .field {
